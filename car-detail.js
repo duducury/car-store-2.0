@@ -322,3 +322,27 @@ function goToDetails(carId) {
       console.error('ID do carro não encontrado!');
   }
 }
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const menu = document.querySelector(".menu");
+  const hamburger = document.querySelector(".hamburger");
+
+  // Função para alternar o menu
+  function toggleMenu() {
+    menu.classList.toggle("active");
+  }
+
+  // Evento de clique no ícone hambúrguer para abrir/fechar o menu
+  hamburger.addEventListener("click", (e) => {
+    e.stopPropagation(); // Evita que o clique no hambúrguer feche imediatamente o menu
+    toggleMenu();
+  });
+
+  // Fecha o menu ao clicar fora dele
+  document.addEventListener("click", (e) => {
+    if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+      menu.classList.remove("active"); // Remove a classe "active" para fechar o menu
+    }
+  });
+});

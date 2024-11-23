@@ -247,3 +247,25 @@ window.addEventListener('scroll', () => {
   });
   
   
+
+
+  const hamburger = document.querySelector('.hamburger');
+const menu = document.querySelector('.menu');
+
+// Alternar o menu hambúrguer
+function toggleMenu() {
+    menu.classList.toggle('active');
+}
+
+// Fecha o menu ao clicar fora dele
+document.addEventListener('click', (e) => {
+    if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+        menu.classList.remove('active');
+    }
+});
+
+// Previne que o clique no botão feche imediatamente o menu
+hamburger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleMenu();
+});

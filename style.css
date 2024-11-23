@@ -262,28 +262,6 @@ body {
     transition: 0.3s;
 }
 
-@media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-        padding: 15px;
-    }
-    .hamburger {
-        display: flex;
-    }
-    .menu {
-        display: none;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-        background-color: #f0f0f5;
-    }
-    .menu.active {
-        display: flex;
-    }
-    .menu-item {
-        margin: 10px 0;
-    }
-}
 
 /* Main Inventory Section */
 .inventory-section {
@@ -299,11 +277,7 @@ body {
     overflow: hidden; /* Para esconder a parte fora da área visível */
 }
 
-.inventory-grid {
-    display: flex;
-    overflow: hidden; /* Oculta o conteúdo que ultrapassa a área visível */
-    width: calc(25% * 4); /* Define a largura para mostrar 4 produtos, cada um com 25% da largura */
-}
+
 
 .car-card {
     min-width: 25%; /* Cada produto ocupa 25% da área visível */
@@ -479,26 +453,6 @@ body {
 }
 
 
-/* Responsive adjustments */
-@media (max-width: 991px) {
-    .inventory-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .car-card {
-        height: auto; /* Remove a altura fixa em telas pequenas */
-    }
-}
-
-@media (max-width: 600px) {
-    .inventory-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .car-card {
-        max-width: 90%; /* Ocupa quase toda a largura da tela */
-    }
-}
 
 /* Zoom-in effect for inventory images */
 .car-image img {
@@ -767,18 +721,6 @@ body {
 
 .dream-car-image img:hover {
     transform: scale(1.1); /* Zoom in by 20% */
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .dream-car-card {
-        flex-direction: column;
-        height: auto;
-    }
-
-    .dream-car-text h2 {
-        font-size: 1.5rem;
-    }
 }
 
 .word {
@@ -1287,44 +1229,6 @@ body {
     margin: 0 10px;
 }
 
-@media (max-width: 1024px) {
-    .statistics-container {
-        padding: 0 20px;
-        gap: 20px;
-    }
-
-    .years-description {
-        font-size: 15px;
-        max-width: 100%;
-    }
-}
-
-@media (max-width: 768px) {
-    .statistics-container {
-        flex-direction: column;
-        align-items: center;
-        gap: 30px;
-    }
-
-    .vertical-border {
-        display: none; 
-    }
-
-    .years-number {
-        font-size: 70px;
-    }
-
-    .data-number {
-        font-size: 40px;
-    }
-
-    .years-description {
-        max-width: 90%;
-        text-align: justify; 
-    }
-}
-
-
 
 
 
@@ -1403,4 +1307,511 @@ body {
 
 
 
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* responsive */
+/* responsive */
+
+/* navar */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 15px;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex: 1;
+    }
+
+    .logo-img {
+        width: 150px; /* Ajusta o tamanho da logo em telas menores */
+        height: auto;
+    }
+
+    .hamburger {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .menu {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        background-color: #dfdfdf;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        z-index: 999;
+    }
+
+    .menu.active {
+        display: flex;
+    }
+
+    .menu-item {
+        margin: 10px 0;
+    }
+
+    .menu-item a {
+        font-size: 1rem;
+        color: #000;
+        text-decoration: none;
+        font-weight: bold;
+    }
+}
+
+
+
+
+/* Responsive carousel */
+@media (max-width: 768px) {
+    .carousel {
+        margin-top: 115px; 
+        height: 300px; /
+    }
+
+    .carousel-image {
+        height: 100%; 
+        object-fit: cover; 
+    }
+
+    .carousel-content {
+        bottom: 10px; 
+        padding: 5px;
+    }
+
+    .carousel-title {
+        font-size: 1rem; 
+    }
+
+    .carousel-description {
+        font-size: 0.7rem;
+    }
+    .carousel-button {
+        font-size: 0.7rem; /* Reduz o tamanho do texto */
+        padding: 5px 10px; /* Diminui o espaçamento interno */
+        width: auto; /* Permite que o botão se ajuste ao conteúdo */
+        height: auto; /* Ajusta a altura ao conteúdo */
+        border-radius: 5px; /* Mantém bordas arredondadas */
+        position: absolute;
+        bottom: 0; /* Posiciona no canto inferior */
+        left: 0; /* Alinha ao canto esquerdo */
+        margin: 10px; /* Adiciona espaçamento interno para não encostar nas bordas */
+    }
+}
+
+/* Estilo responsivo */
+@media (max-width: 768px) {
+    .inventory-header {
+        margin-top: 50px; /* Aumenta o espaçamento superior */
+        padding-left: 15px; /* Ajusta alinhamento à esquerda */
+    }
+
+    .inventory-section {
+        padding: 20px 10px; /* Reduz padding geral e centraliza */
+    }
+
+    .subtitle {
+        font-size: 22px; /* Mantém tamanho legível */
+        margin-bottom: 10px; /* Adiciona espaçamento abaixo */
+    }
+
+    .title {
+        font-size: 30px; /* Tamanho proporcional para mobile */
+        margin-bottom: 15px; /* Espaçamento adicional para separação */
+    }
+}
+
+
+/* slide container  */
+
+@media (max-width: 768px) {
+    .inventory-grid {
+        display: flex;
+        justify-content: space-between;
+        overflow-x: auto; /* Ativa rolagem horizontal */
+        gap: 8px; /* Reduz espaçamento entre os cards */
+        padding: 10px; /* Espaçamento interno */
+        max-width: 70%; /* Reduz a largura total do grid */
+    
+    }
+
+    .car-card {
+        flex: 0 0 calc(30% - 8px); /* Cada card ocupa 30% da largura visível */
+        max-width: calc(30% - 8px); /* Limita a largura máxima */
+        height: auto; /* Altura automática ajustada ao conteúdo */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve */
+    }
+
+    .car-image {
+        height: 100px; /* Controla a altura da imagem */
+        overflow: hidden; /* Garante que o conteúdo não ultrapasse */
+    }
+
+    .car-image img {
+        width: 100%; /* Preenche a largura */
+        height: 100%; /* Preenche a altura definida */
+        object-fit: cover; /* Mantém proporção */
+    }
+
+    .car-details {
+        padding: 5px; /* Reduz o espaçamento interno */
+        font-size: 12px; /* Texto menor para mobile */
+    }
+}
+
+
+/* Responsivo para telas menores */
+@media (max-width: 768px) {
+    .intro-section {
+        padding: 30px 10px; /* Reduz o padding geral */
+    }
+
+    .intro-name {
+        font-size: 2rem; /* Reduz o tamanho do título */
+        line-height: 1.2; /* Ajusta o espaçamento entre linhas */
+    }
+
+    .wave {
+        font-size: 1.5rem; /* Diminui o tamanho do emoji */
+    }
+
+    .intro-description {
+        font-size: 1rem; /* Reduz o tamanho da descrição */
+        margin-top: 5px;
+    }
+}
+
+/* Para telas muito pequenas */
+@media (max-width: 480px) {
+    .intro-name {
+        font-size: 1.8rem; /* Reduz ainda mais o tamanho do título */
+    }
+
+    .intro-description {
+        font-size: 0.9rem; /* Ajusta a descrição */
+    }
+}
+
+
+/* Estilo responsivo */
+@media (max-width: 768px) {
+    .work-gallery-container {
+        padding: 10px; /* Reduz o padding em dispositivos menores */
+    }
+
+    .work-header .title {
+        font-size: 2rem; /* Reduz o tamanho do título */
+        line-height: 1.2; /* Ajusta a altura das linhas */
+        margin-bottom: 15px;
+    }
+
+    .highlight {
+        font-size: inherit; /* Mantém o tamanho proporcional ao título */
+    }
+}
+
+@media (max-width: 480px) {
+    .work-header .title {
+        font-size: 1.8rem; /* Ajusta ainda mais o tamanho para telas muito pequenas */
+    }
+
+    .highlight {
+        font-size: inherit; /* Garante que o texto em destaque fique proporcional */
+    }
+
+    .work-gallery-container {
+        padding: 5px; /* Reduz ainda mais o padding */
+    }
+}
+
+@media (max-width: 768px) {
+    .section-title-text {
+        font-size: 2.0rem; /* Ajusta o tamanho do texto */
+        text-align: center; /* Centraliza o texto */
+        line-height: 1.2; /* Reduz o espaçamento entre as linhas */
+    }
+    .feature-description {
+        font-size: 0.9rem;
+        line-height: 1.4;
+        text-align: justify;
+        hyphens: auto; /* Permite divisão de palavras para reduzir espaços grandes */
+        word-break: break-word; /* Garante que palavras muito longas sejam quebradas */
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+/* Estilo responsivo para telas menores */
+@media (max-width: 768px) {
+    .dream-car-card {
+        background-color: #000;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        padding: 0px;
+        height: 200px;
+    }
+
+    .dream-car-text {
+        flex: 1;
+        text-align: left;
+        font-size: 0.8rem;
+        line-height: 1.3;
+        padding-right: 10px;
+    }
+
+    .dream-car-header {
+        font-size: 0.5rem;
+        top: 10px;
+        left: 10px;
+        text-align: left;
+        padding: 5px 10px;
+    }
+
+    .dream-car-image {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        max-width: 50%;
+    }
+
+    .dream-car-image img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .dream-car-text .word {
+        font-size: 0.9rem;
+        line-height: 1.2;
+    }
+}
+
+
+/* Cars logos  */
+@media (max-width: 768px) {
+    .logo-slider {
+        padding: 10px 0;
+    }
+
+    .slider-track {
+        gap: 5px; /* Reduz o espaço entre os itens */
+    }
+
+    .slider-item {
+        flex: 0 0 30%;
+        max-width: 30%;
+    }
+
+    .slider-item img {
+        max-width: 80%;
+        max-height: 80%;
+    }
+
+    .slider-btn {
+        padding: 10px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .slider-item {
+        flex: 0 0 40%;
+        max-width: 40%;
+    }
+
+    .slider-item img {
+        max-width: 90%;
+        max-height: 90%;
+    }
+
+    .slider-btn {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+
+    .prev-btn {
+        left: 5px;
+    }
+
+    .next-btn {
+        right: 5px;
+    }
+}
+
+
+
+
+
+/* anos importando */
+
+@media (max-width: 1024px) {
+    .statistics-container {
+        padding: 0 20px;
+        gap: 20px;
+    }
+
+    .years-description {
+        font-size: 15px;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .statistics-container {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .years-number {
+        font-size: 100px;
+    }
+
+    .data-number {
+        font-size: 40px;
+    }
+
+    .years-description {
+        font-size: 18px;
+        text-align: center;
+    }
+}
+
+
+
+
+
+/* footer */
+@media (max-width: 1024px) {
+    .footer-content {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .footer-column {
+        flex: 1 1 45%;
+        min-width: 200px;
+        text-align: center;
+    }
+
+    .footer-logo-image {
+        max-width: 150px;
+    }
+
+    .footer-about {
+        font-size: 0.85rem;
+    }
+
+    .footer-title {
+        font-size: 1rem;
+    }
+
+    .footer-contact li {
+        font-size: 0.85rem;
+    }
+
+    .social-icon {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .footer-column {
+        flex: 1 1 100%;
+    }
+
+    .footer-logo-image {
+        max-width: 120px;
+    }
+
+    .footer-about {
+        font-size: 0.8rem;
+        line-height: 1.4;
+    }
+
+    .footer-title {
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+    }
+
+    .footer-contact li {
+        font-size: 0.8rem;
+    }
+
+    .whatsapp-link {
+        font-size: 0.85rem;
+        padding: 8px 12px;
+    }
+
+    .social-icon {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-logo-image {
+        max-width: 100px;
+    }
+
+    .footer-about {
+        font-size: 0.75rem;
+    }
+
+    .footer-title {
+        font-size: 0.85rem;
+    }
+
+    .footer-contact li {
+        font-size: 0.75rem;
+    }
+
+    .whatsapp-link {
+        font-size: 0.75rem;
+        padding: 6px 10px;
+    }
+
+    .social-icon {
+        font-size: 0.9rem;
+    }
+
+    .footer-bottom {
+        font-size: 0.7rem;
+    }
+}

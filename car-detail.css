@@ -557,3 +557,117 @@ img {
 .whatsapp-button:hover .whatsapp-icon {
   transform: scale(1.2);
 }
+
+
+
+
+/* responsivo */
+/* Contêiner do carrossel */
+#inventory-grid {
+  display: flex;
+  overflow: hidden; /* Esconde os itens fora da área visível */
+  scroll-behavior: smooth;
+  width: 100%; /* O contêiner ocupa toda a largura */
+  max-width: 1200px; /* Limite de largura máxima */
+  margin: 0 auto; /* Centraliza horizontalmente */
+  position: relative; /* Necessário para botões de navegação */
+  padding: 0 20px; /* Espaçamento interno */
+}
+
+/* Cards */
+.car-card {
+  flex: 0 0 calc(33.33% - 20px); /* Três cards aparecem lado a lado */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+  margin: 10px; /* Espaçamento ao redor do card */
+  transition: transform 0.3s ease;
+  height: auto; /* Altura automática para se ajustar ao conteúdo */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Imagens dentro dos cards */
+.car-image {
+  width: 100%;
+  height: auto; /* Ajuste automático da altura */
+  overflow: hidden; /* Esconde partes extras */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.car-image img {
+  width: 100%; /* Ocupa toda a largura do contêiner */
+  height: auto; /* Mantém a proporção da imagem */
+  object-fit: contain; /* Ajusta a imagem dentro do espaço sem cortar */
+}
+
+/* Botões de navegação do carrossel */
+.inventory-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#prevInventory {
+  left: 0; /* Botão de navegação à esquerda */
+}
+
+#nextInventory {
+  right: 0; /* Botão de navegação à direita */
+}
+
+.inventory-nav:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Responsividade */
+/* Responsividade para telas médias (até 1024px) */
+@media (max-width: 1024px) {
+  #inventory-grid {
+    padding: 0 10px; /* Reduz o espaçamento interno */
+    gap: 15px; /* Diminui o espaço entre os cards */
+  }
+
+  .car-card {
+    flex: 0 0 calc(45% - 15px); /* Mostra 2 cards por linha */
+    max-width: 400px; 
+    margin: 10px auto; 
+  }
+
+  .car-image img {
+    width: 100%; 
+    height: auto; 
+  }
+}
+
+/* Responsividade para telas pequenas (até 768px) */
+@media (max-width: 768px) {
+  #inventory-grid {
+    gap: 10px;
+  }
+
+  .car-card {
+    flex: 0 0 calc(100% - 20px); 
+    max-width: 100%; 
+  }
+
+  .car-image img {
+    width: 100%; 
+    height: auto; 
+  }
+}

@@ -275,3 +275,168 @@
 .contact-btn i {
     font-size: 1.2rem;
 }
+
+
+
+
+
+
+/* responsivo */
+@media (max-width: 768px) {
+    .filter-section {
+        height: auto;
+        margin-top: 80px;
+        padding: 20px;
+    }
+
+    .filter-overlay h1 {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+    }
+
+    .filter-options {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px;
+        width: 100%;
+        box-shadow: none;
+    }
+
+    .filter-options select {
+        width: 100%;
+        padding: 8px;
+        font-size: 1rem;
+    }
+
+    .filter-search-btn {
+        width: 100%;
+        padding: 10px;
+        font-size: 1rem;
+    }
+}
+
+
+
+/* Ajustes responsivos */
+/* Ajustes responsivos */
+@media (max-width: 1200px) {
+    .inventory-grid {
+        grid-template-columns: repeat(3, 1fr); /* Três colunas */
+    }
+
+    .car-card {
+        max-width: 380px; /* Aumenta o tamanho máximo do card */
+        padding: 20px; /* Mantém o espaçamento interno */
+    }
+
+    .car-image img {
+        width: 100%; /* Preenche a largura do card */
+        height: auto; /* Ajusta a altura automaticamente */
+        object-fit: contain; /* Mostra a imagem inteira sem cortes */
+        border-radius: 8px; /* Mantém os cantos arredondados */
+    }
+}
+
+@media (max-width: 991px) {
+    .inventory-grid {
+        grid-template-columns: repeat(2, 1fr); /* Duas colunas */
+    }
+
+    .car-card {
+        max-width: 360px; /* Ajusta o tamanho máximo dos cards */
+        padding: 15px; /* Reduz ligeiramente o padding */
+    }
+
+    .car-image img {
+        width: 100%; /* Preenche a largura do card */
+        height: auto; /* Garante que a altura seja proporcional */
+        object-fit: contain; /* Impede cortes na imagem */
+    }
+}
+
+@media (max-width: 600px) {
+    .inventory-grid {
+        grid-template-columns: 1fr; /* Uma coluna */
+    }
+
+    .car-card {
+        width: 90%; /* Ocupa quase toda a tela */
+        max-width: 100%; /* Remove o limite máximo de largura */
+        padding: 20px; /* Adiciona espaço interno adequado */
+    }
+
+    .car-image img {
+        width: 100%; /* Preenche a largura do card */
+        height: auto; /* Garante proporção */
+        object-fit: contain; /* Evita cortes */
+    }
+}
+.car-card {
+    border-radius: 8px; /* Mantém bordas arredondadas no card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Garante que nenhum conteúdo saia do card */
+    padding: 0; /* Remove qualquer padding dentro do card */
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 100%; /* Ajusta para ocupar toda a largura disponível */
+    max-width: 400px; /* Define um limite máximo para o card */
+    margin: 20px auto; /* Centraliza os cards */
+}
+
+.car-image {
+    width: 100%; /* Faz o container da imagem ocupar toda a largura do card */
+    height: 250px; /* Define uma altura fixa para a imagem */
+    overflow: hidden; /* Garante que partes extras da imagem sejam ocultadas */
+}
+
+.car-image img {
+    width: 100%; /* Preenche toda a largura do container */
+    height: 100%; /* Preenche toda a altura do container */
+    object-fit: cover; /* Ajusta a imagem para ocupar o espaço sem distorções */
+}
+
+.car-details {
+    padding: 15px; /* Adiciona espaçamento interno para os detalhes */
+    color: #333; /* Cor padrão para o texto */
+}
+
+.car-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.car-price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.car-specs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.car-spec {
+    font-size: 0.9rem;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.view-details-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.view-details-btn:hover {
+    background-color: #0056b3;
+}

@@ -613,3 +613,24 @@ document.addEventListener("DOMContentLoaded", () => {
   
 
   
+  const hamburger = document.querySelector('.hamburger');
+  const menu = document.querySelector('.menu');
+  
+  // Alterna a classe 'active' para abrir/fechar o menu
+  function toggleMenu() {
+      menu.classList.toggle('active');
+  }
+  
+  // Adiciona evento de clique ao ícone do menu hambúrguer
+  hamburger.addEventListener('click', (e) => {
+      e.stopPropagation(); // Impede o clique de ser detectado pelo evento do documento
+      toggleMenu();
+  });
+  
+  // Fecha o menu ao clicar fora dele
+  document.addEventListener('click', (e) => {
+      if (menu.classList.contains('active') && !menu.contains(e.target) && !hamburger.contains(e.target)) {
+          menu.classList.remove('active');
+      }
+  });
+  
