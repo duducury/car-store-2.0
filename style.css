@@ -1406,15 +1406,10 @@ body {
         font-size: 0.7rem;
     }
     .carousel-button {
-        font-size: 0.7rem; /* Reduz o tamanho do texto */
-        padding: 5px 10px; /* Diminui o espaçamento interno */
-        width: auto; /* Permite que o botão se ajuste ao conteúdo */
-        height: auto; /* Ajusta a altura ao conteúdo */
-        border-radius: 5px; /* Mantém bordas arredondadas */
-        position: absolute;
-        bottom: 0; /* Posiciona no canto inferior */
-        left: 0; /* Alinha ao canto esquerdo */
-        margin: 10px; /* Adiciona espaçamento interno para não encostar nas bordas */
+        bottom: 20px; /* Sobe o botão 20px acima da borda inferior */
+        left: 10px; /* Mantém o espaçamento à esquerda */
+        font-size: 0.6rem; /* Ajusta o tamanho do texto para melhorar a visibilidade */
+        padding: 8px 12px; /* Aumenta um pouco o espaçamento interno */
     }
 }
 
