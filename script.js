@@ -634,3 +634,37 @@ document.addEventListener("DOMContentLoaded", () => {
       }
   });
   
+
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const sliderTrack = document.querySelector(".slider-track");
+    let startX = 0;
+    let currentTranslate = 0;
+    let prevTranslate = 0;
+    let isDragging = false;
+  
+    // Detecta o início do toque
+    sliderTrack.addEventListener("touchstart", (e) => {
+      startX = e.touches[0].clientX; // Posição inicial do toque
+      isDragging = true;
+      sliderTrack.style.transition = "none"; // Remove a transição enquanto arrasta
+    });
+  
+    // Detecta o movimento do dedo
+    sliderTrack.addEventListener("touchmove", (e) => {
+      if (!isDragging) return;
+  
+      const currentX = e.touches[0].clientX; // Posição atual do toque
+      const deltaX = currentX - startX; // Diferença entre início e posição atual
+      currentTranslate = prevTranslate + deltaX; // Atualiza o deslocamento
+      sliderTrack.style.transform = `translateX(${currentTranslate}px)`;
+    });
+  
+    // Detecta o final do toque
+    sliderTrack.addEventListener("touchend", () => {
+      isDragging = false;
+      prevTranslate = currentTranslate; // Salva o deslocamento para o próximo movimento
+      sliderTrack.style.transition = "transform 0.3s ease"; // Restaura a transição
+    });
+  });
+  

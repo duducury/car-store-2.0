@@ -1477,7 +1477,26 @@ body {
         font-size: 12px; /* Texto menor para mobile */
     }
 }
-
+  
+@media (max-width: 768px) {
+    /* Ajuste no card para telas pequenas */
+    .car-card {
+      flex: 0 0 calc(100% - 20px); /* Um card por linha */
+      height: auto; /* Altura automática */
+    }
+  
+    .car-image {
+      width: 100%; /* Contêiner ocupa toda a largura do card */
+      height: 180px; /* Altura fixa menor */
+    }
+  
+    .car-image img {
+      width: 100%; /* Imagem ocupa toda a largura */
+      height: 100%; /* Imagem preenche a altura */
+      object-fit: cover; /* Mantém a proporção da imagem */
+    }
+  }
+  
 
 /* Responsivo para telas menores */
 @media (max-width: 768px) {
@@ -1815,3 +1834,55 @@ body {
         font-size: 0.7rem;
     }
 }
+@media (max-width: 1024px) {
+    /* Ajuste no card para telas médias */
+    .car-card {
+      flex: 0 0 calc(50% - 20px); /* Dois cards por linha */
+      margin: 10px auto; /* Espaçamento entre os cards */
+      height: auto; /* Altura automática para ajustar ao conteúdo */
+    }
+  
+    .car-image {
+      width: 100%; /* Garante que o contêiner ocupe toda a largura do card */
+      height: 200px; /* Define uma altura fixa para a imagem */
+      overflow: hidden; /* Esconde partes excedentes da imagem */
+    }
+  
+    .car-image img {
+      width: 100%; /* A imagem ocupa toda a largura */
+      height: 100%; /* A imagem preenche a altura definida */
+      object-fit: cover; /* Garante que a proporção seja mantida, cortando excessos */
+      display: block; /* Remove possíveis espaços extras */
+    }
+  }
+  
+  @media (max-width: 1024px) {
+    .work-gallery {
+      gap: 5px; /* Reduz o espaço entre as fotos */
+    }
+  
+    .work-item {
+      border-radius: 5px; /* Bordas um pouco menores */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .work-gallery {
+      gap: 3px; /* Reduz ainda mais o espaço entre as fotos */
+    }
+  
+    .work-item {
+      border-radius: 3px; /* Bordas mínimas */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .work-gallery {
+      gap: 2px; /* Espaço quase inexistente entre as fotos */
+    }
+  
+    .work-item {
+      border-radius: 2px; /* Quase sem bordas */
+    }
+  }
+  

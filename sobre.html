@@ -294,7 +294,26 @@
   window.addEventListener('resize', updateCarousel);
 </script>
 
+<script>
+  function toggleMenu() {
+  const menu = document.querySelector('.menu');
+  menu.classList.toggle('active');
+}
 
+
+</script>
+<script>
+  document.addEventListener('click', (event) => {
+  const menu = document.querySelector('.menu');
+  const hamburger = document.querySelector('.hamburger');
+
+  // Verifica se o clique foi fora do menu e do ícone do menu hambúrguer
+  if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
+      menu.classList.remove('active'); // Remove a classe que exibe o menu
+  }
+});
+
+</script>
 
 </body>
 </html>
