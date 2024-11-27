@@ -671,3 +671,10 @@ img {
     height: auto; 
   }
 }
+#inventory-grid.active {
+  cursor: grabbing; /* Mostra um cursor de "pegando" enquanto desliza */
+}
+#inventory-grid {
+  scroll-behavior: smooth; /* Rolagem suave */
+  transition: transform 0.3s ease; /* Transição ao deslizar */
+}

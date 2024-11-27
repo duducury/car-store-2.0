@@ -346,3 +346,96 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+document.addEventListener('DOMContentLoaded', () => {
+  const slider = document.querySelector('#inventory-grid');
+  const prevButton = document.querySelector('#prevInventory');
+  const nextButton = document.querySelector('#nextInventory');
+
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  // Evento para deslizar com o mouse ou dedo
+  slider.addEventListener('mousedown', (e) => {
+    isDown = true;
+    slider.classList.add('active');
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+  });
+
+  slider.addEventListener('mouseleave', () => {
+    isDown = false;
+    slider.classList.remove('active');
+  });
+
+  slider.addEventListener('mouseup', () => {
+    isDown = false;
+    slider.classList.remove('active');
+  });
+
+  slider.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - startX) * 1; // Ajuste a velocidade do deslize
+    slider.scrollLeft = scrollLeft - walk;
+  });
+
+  // Suporte a touch (deslize no celular)
+  slider.addEventListener('touchstart', (e) => {
+    isDown = true;
+    startX = e.touches[0].pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+  });
+
+  slider.addEventListener('touchend', () => {
+    isDown = false;
+  });
+
+  slider.addEventListener('touchmove', (e) => {
+    if (!isDown) return;
+    const x = e.touches[0].pageX - slider.offsetLeft;
+    const walk = (x - startX) * 1; // Ajuste a sensibilidade do deslize
+    slider.scrollLeft = scrollLeft - walk;
+  });
+
+  // Botões de navegação
+  prevButton.addEventListener('click', () => {
+    slider.scrollBy({ left: -200, behavior: 'smooth' });
+  });
+
+  nextButton.addEventListener('click', () => {
+    slider.scrollBy({ left: 200, behavior: 'smooth' });
+  });
+});
+function setupCarouselNavigation() {
+  const inventoryGrid = document.getElementById('inventory-grid');
+  const prevInventory = document.getElementById('prevInventory');
+  const nextInventory = document.getElementById('nextInventory');
+
+  let cardWidth = inventoryGrid.querySelector('.car-card').offsetWidth + 10; // Largura do card + gap
+
+  // Atualiza a largura do card ao redimensionar a tela
+  window.addEventListener('resize', () => {
+    const card = inventoryGrid.querySelector('.car-card');
+    if (card) {
+      cardWidth = card.offsetWidth + 10; // Atualiza o cálculo de largura
+    }
+  });
+
+  // Botão anterior
+  prevInventory.addEventListener('click', () => {
+    inventoryGrid.scrollBy({
+      left: -cardWidth, // Move exatamente a largura de um card para trás
+      behavior: 'smooth',
+    });
+  });
+
+  // Botão próximo
+  nextInventory.addEventListener('click', () => {
+    inventoryGrid.scrollBy({
+      left: cardWidth, // Move exatamente a largura de um card para frente
+      behavior: 'smooth',
+    });
+  });
+}

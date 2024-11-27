@@ -667,4 +667,72 @@ document.addEventListener("DOMContentLoaded", () => {
       sliderTrack.style.transition = "transform 0.3s ease"; // Restaura a transição
     });
   });
+  document.addEventListener('DOMContentLoaded', () => {
+    const sliderTrack = document.querySelector('.slider-track');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    let isDragging = false;
+    let startX;
+    let scrollLeft;
+  
+    // Configuração para deslizar com o mouse ou toque
+    sliderTrack.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      startX = e.pageX - sliderTrack.offsetLeft;
+      scrollLeft = sliderTrack.scrollLeft;
+      sliderTrack.classList.add('dragging');
+    });
+  
+    sliderTrack.addEventListener('touchstart', (e) => {
+      isDragging = true;
+      startX = e.touches[0].pageX - sliderTrack.offsetLeft;
+      scrollLeft = sliderTrack.scrollLeft;
+      sliderTrack.classList.add('dragging');
+    });
+  
+    sliderTrack.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      e.preventDefault();
+      const x = e.pageX - sliderTrack.offsetLeft;
+      const walk = (x - startX) * 1; // Velocidade de deslocamento
+      sliderTrack.scrollLeft = scrollLeft - walk;
+    });
+  
+    sliderTrack.addEventListener('touchmove', (e) => {
+      if (!isDragging) return;
+      const x = e.touches[0].pageX - sliderTrack.offsetLeft;
+      const walk = (x - startX) * 1; // Velocidade de deslocamento
+      sliderTrack.scrollLeft = scrollLeft - walk;
+    });
+  
+    sliderTrack.addEventListener('mouseleave', () => {
+      isDragging = false;
+      sliderTrack.classList.remove('dragging');
+    });
+  
+    sliderTrack.addEventListener('mouseup', () => {
+      isDragging = false;
+      sliderTrack.classList.remove('dragging');
+    });
+  
+    sliderTrack.addEventListener('touchend', () => {
+      isDragging = false;
+      sliderTrack.classList.remove('dragging');
+    });
+  
+    // Navegação com os botões
+    prevBtn.addEventListener('click', () => {
+      sliderTrack.scrollBy({
+        left: -200, // Ajuste a largura para mover por logo
+        behavior: 'smooth',
+      });
+    });
+  
+    nextBtn.addEventListener('click', () => {
+      sliderTrack.scrollBy({
+        left: 200, // Ajuste a largura para mover por logo
+        behavior: 'smooth',
+      });
+    });
+  });
   
