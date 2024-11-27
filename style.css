@@ -1383,6 +1383,118 @@ body {
 
 
 
+
+
+
+
+
+
+/* Ajuste do menu no telefone */
+@media (max-width: 768px) {
+    .menu {
+      display: none; /* Ocultar o menu por padrão */
+      flex-direction: column;
+      align-items: flex-start; /* Alinhar itens do menu à esquerda */
+      width: 50%; /* Largura reduzida para 80% da tela */
+      background-color: #d8d8d8; /* Cor de fundo clara */
+      padding: 20px;
+      position: absolute;
+      top: 90px; /* Espaço abaixo da barra de navegação */
+      right: 0; /* Alinhado à direita */
+      left: auto; /* Garante que o lado esquerdo não interfira */
+      z-index: 999; /* Certificar-se de que está acima de outros elementos */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve */
+      border-radius: 10px 0 0 10px; /* Bordas arredondadas apenas do lado esquerdo */
+      transition: transform 0.3s ease-in-out; /* Suavidade ao aparecer/desaparecer */
+    }
+  
+    .menu.active {
+      display: flex;
+    }
+  
+    .menu-item {
+      margin: 10px 0;
+      width: 100%; /* Ocupa toda a largura */
+      text-align: left; /* Texto alinhado à esquerda */
+    }
+  
+    .menu-item a {
+      font-size: 1rem;
+      color: #333;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  
+    /* Separador */
+    .menu-divider {
+      width: 100%;
+      height: 1px;
+      background-color: #ddd; /* Cor do separador */
+      margin: 20px 0; /* Espaçamento acima e abaixo */
+    }
+  
+    /* "Precisa de ajuda?" */
+    .menu-help {
+      display: block; /* Exibe a seção no responsivo */
+      width: 100%;
+      text-align: left;
+      margin-top: 10px;
+    }
+  
+    .help-text {
+      font-size: 1rem;
+      color: #444;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+  
+    .help-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+  
+    .help-item i {
+      margin-right: 10px;
+      color: #007bff; /* Cor dos ícones */
+      font-size: 1.2rem;
+    }
+  
+    .help-item a {
+      color: #333;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+  
+    .help-item a:hover {
+      color: #007bff; /* Cor ao passar o mouse */
+    }
+
+    /* Ícones específicos */
+    .help-item .fa-phone-alt {
+        color: #007bff;
+    }
+
+    .help-item .fa-envelope {
+        color: #ff9500;
+    }
+
+    .help-item .fa-instagram {
+        color: #e4405f;
+    }
+}
+/* Esconde a seção de ajuda no desktop */
+@media (min-width: 769px) {
+  .menu-help {
+    display: none; /* Esconde no desktop */
+  }
+
+  .menu-divider {
+    display: none; /* Esconde o separador no desktop */
+  }
+}
+
+
 /* Responsive carousel */
 @media (max-width: 768px) {
     .carousel {
