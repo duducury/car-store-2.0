@@ -1686,7 +1686,9 @@ body {
         font-size: 0.9rem; /* Ajusta a descrição */
     }
 }
-
+.work-item {
+    aspect-ratio: 3 / 5; /* Altura maior, tipo Instagram feed */
+  }
 
 /* Estilo responsivo */
 @media (max-width: 768px) {
