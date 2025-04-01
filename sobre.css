@@ -299,57 +299,9 @@
     }
 }
 
-.carousel-inner img {
-    max-height: 600px;
-    object-fit: cover;
-}
-
-.carousel-container {
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1000;
-    width: 100%;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 0;
-    padding: 0;
-}
-
-.carousel-container {
-    margin-top: -180px;
-}
-
-.carousel-images {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-}
-
-.carousel {
-    position: relative;
-    width: 350px;
-    height: 400px;
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.carousel-images img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
 
 
 
-
-
-.menu {
-    z-index: 1000; /* Certifique-se de que este valor seja maior que outros elementos */
-    position: relative; /* Para que o z-index funcione */
-}
 
 
 
