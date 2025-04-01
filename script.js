@@ -738,7 +738,17 @@ document.addEventListener("DOMContentLoaded", () => {
   
   
 
-
+  document.addEventListener('DOMContentLoaded', () => {
+    if (window.innerWidth <= 768) {
+      document.querySelectorAll('.carousel-image').forEach(img => {
+        const mobileSrc = img.getAttribute('data-src-mobile');
+        if (mobileSrc) {
+          img.setAttribute('src', mobileSrc);
+        }
+      });
+    }
+  });
+  
 
 //   test 
 
