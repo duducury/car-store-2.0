@@ -650,6 +650,7 @@ body {
 .work-item:hover img {
     transform: scale(1.1); /* Aplica um zoom de 10% ao passar o mouse */
 }
+
 .work-header, .work-header h2, .work-header h3, .work-section, .work-section h2, .work-section h3 {
     color: white !important; /* Ensure text color is white */
 }
@@ -1690,9 +1691,19 @@ body {
 /* Estilo responsivo */
 @media (max-width: 768px) {
     .work-gallery-container {
-        padding: 10px; /* Reduz o padding em dispositivos menores */
+        padding: 0;
+        margin: 0;
+        width: 100vw;
+      }
+      .work-section {
+        padding: 20px 0;
+        border-radius: 0;
+      }
+    
+      .work-item {
+        border-radius: 0;
+      }
     }
-
     .work-header .title {
         font-size: 2rem; /* Reduz o tamanho do título */
         line-height: 1.2; /* Ajusta a altura das linhas */
