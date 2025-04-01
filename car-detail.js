@@ -111,6 +111,11 @@ function cleanCSV(data) {
       document.getElementById('car-detail-transmission').textContent = car.Cambio || 'Não disponível';
       document.getElementById('car-detail-fuel').textContent = car.Combustivel || 'Não disponível';
       document.getElementById('car-detail-drive').textContent = car.Tração || 'Não disponível';
+      document.getElementById('car-detail-doors').textContent = car.Portas || 'Não disponível';
+      document.getElementById('car-detail-body').textContent = car.Carroceria || 'Não disponível';
+      document.getElementById('car-detail-condition').textContent = car.Condição || 'Não disponível';
+      // document.getElementById('car-detail-location').textContent = car.Local || 'Não disponível';
+
       document.getElementById('car-detail-description').textContent = car.Descrição || 'Descrição não disponível';
   
       // Carregar imagens no carrossel e thumbnails
@@ -439,3 +444,4 @@ function setupCarouselNavigation() {
     });
   });
 }
+
