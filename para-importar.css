@@ -157,11 +157,71 @@
 }
 
 @media (max-width: 600px) {
-    .inventory-grid {
-        grid-template-columns: 1fr;
+    body, html {
+      padding: 0;
+      margin: 0;
+      overflow-x: hidden;
     }
-}
+  
+    .inventory-section {
+      padding: 0;
+      margin: 0;
+      width: 100vw;
+    }
+  
+    .inventory-grid {
+      grid-template-columns: 1fr;
+      padding: 0;
+      margin: 0;
+      width: 100vw;
+    }
+  
+    .car-card {
+      width: 100vw;
+      max-width: 100vw;
+      margin: 0;
+      border-radius: 0;
+      box-shadow: none; /* se quiser sem sombra nas bordas */
+    }
+  
+    .car-image {
+      width: 100vw;
+      height: 250px;
+    }
+  
+    .car-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  
+    .car-details {
+      padding: 15px;
+    }
+  }
+  
+@media (max-width: 768px) {
+  .inventory-header {
+    padding: 20px 15px;
+    text-align: center;
+    width: 100%;
+  }
 
+  .inventory-header .subtitle {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .inventory-header .title {
+    font-size: 2rem;
+    line-height: 1.2;
+    color: #111;
+    font-weight: 800;
+  }
+}
 
 
 .pagination {
