@@ -1208,7 +1208,7 @@ body {
 }
 
 .social-icon:hover {
-    color: #3897f0;
+    color: #0b58a0;
 }
 
 .footer-bottom {
@@ -1229,6 +1229,38 @@ body {
     transform: scale(1.1); 
 }
 
+.footer-contact li {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 10px;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+  }
+  
+  .footer-contact i {
+    color: #3897f0;
+    font-size: 1rem;
+  }
+  
+  .footer-contact span {
+    color: #fff;
+    font-weight: bold;
+    font-size: 0.95rem;
+  }
+  
+  .footer-contact a {
+    color: #3897f0;
+    font-size: 0.85rem;
+    text-decoration: none;
+  }
+  
+  .footer-contact a:hover {
+    color: #1d72e8; /* azul mais forte no hover */
+    text-decoration: underline;
+    transition: color 0.3s ease;
+  }
+  
 
 /* footer */
 
