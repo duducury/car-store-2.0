@@ -43,19 +43,20 @@
   .botao-sobre {
     display: inline-block;
     margin-top: 10px;
-    background-color: #28bffe;
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
     color: white;
     padding: 14px 28px;
     border-radius: 6px;
     text-decoration: none;
     font-weight: bold;
-    transition: background 0.3s ease;
+    transition: transform 0.2s ease;
+    text-align: center;
   }
+  
   
   .botao-sobre:hover {
-    background-color: #1a9ed4;
+    transform: scale(1.05);
   }
-  
 
   @media (max-width: 768px) {
     .container-sobre {
