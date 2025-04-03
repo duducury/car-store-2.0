@@ -1461,7 +1461,13 @@ body {
 
 
 
-
+/* Esconde no desktop */
+@media (min-width: 769px) {
+    .menu-help,
+    .menu-divider {
+      display: none;
+    }
+  }
 
 
 
