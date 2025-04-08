@@ -356,92 +356,70 @@ document.addEventListener('DOMContentLoaded', () => {
   const prevButton = document.getElementById('prevInventory');
   const nextButton = document.getElementById('nextInventory');
 
-  // ----- Efeito Infinito: Duplica o conteúdo do slider -----
-  if (slider) {
-    // Salva o conteúdo original
-    const originalContent = slider.innerHTML;
-    // Duplica para que a experiência seja contínua
-    slider.innerHTML += originalContent;
-
-    // Define a posição inicial para a metade dos itens
-    const totalItems = slider.children.length; // Total após duplicação
-    const originalCount = totalItems / 2;
-    if (slider.children.length > 0) {
-      // Se o primeiro item tiver gap (por exemplo, 10px definido no JS ou CSS), ajuste se necessário
-      const firstItemWidth = slider.children[0].offsetWidth + 10; 
-      slider.scrollLeft = firstItemWidth * originalCount;
-    }
-  }
-
-  // ----- Eventos de Arraste (Mouse & Touch) -----
   let isDown = false;
-  let startX;
-  let scrollLeftStart;
+  let startX = 0;
+  let scrollLeftStart = 0;
+  let startTime = 0; // Guarda o instante em que o gesto iniciou
 
-  // Eventos para mouse
-  slider.addEventListener('mousedown', (e) => {
+  // Inicia o gesto (para mouse e touch)
+  const onDragStart = (pageX) => {
     isDown = true;
-    slider.classList.add('active');  // Se você quiser mudar o cursor ou aplicar algum estilo
-    startX = e.pageX - slider.offsetLeft;
+    startX = pageX - slider.offsetLeft;
     scrollLeftStart = slider.scrollLeft;
-  });
-  slider.addEventListener('mouseleave', () => {
-    isDown = false;
-    slider.classList.remove('active');
-  });
-  slider.addEventListener('mouseup', () => {
-    isDown = false;
-    slider.classList.remove('active');
-  });
-  slider.addEventListener('mousemove', (e) => {
+    startTime = new Date().getTime(); // Registra o tempo de início
+    slider.classList.add('active'); // Pode ser usado para mudar o cursor, por exemplo
+  };
+
+  // Durante o gesto
+  const onDragMove = (pageX) => {
     if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - slider.offsetLeft;
+    const x = pageX - slider.offsetLeft;
     const walk = x - startX; // Calcula a distância movida
     slider.scrollLeft = scrollLeftStart - walk;
-  });
+  };
 
-  // Eventos para toque (mobile)
-  slider.addEventListener('touchstart', (e) => {
-    isDown = true;
-    startX = e.touches[0].pageX - slider.offsetLeft;
-    scrollLeftStart = slider.scrollLeft;
-  });
-  slider.addEventListener('touchend', () => {
-    isDown = false;
-  });
-  slider.addEventListener('touchmove', (e) => {
+  // Ao encerrar o gesto, calcula a velocidade e aplica momentum
+  const onDragEnd = () => {
     if (!isDown) return;
-    const x = e.touches[0].pageX - slider.offsetLeft;
-    const walk = x - startX;
-    slider.scrollLeft = scrollLeftStart - walk;
-  });
+    isDown = false;
+    slider.classList.remove('active');
+    const endTime = new Date().getTime();
+    const dt = endTime - startTime; // Duração do gesto (ms)
+    // dx é a variação no scroll a partir do início até o fim do gesto
+    const dx = slider.scrollLeft - scrollLeftStart;
+    // Calcula a velocidade (pixels por ms)
+    const velocity = Math.abs(dx) / dt;
+    // Fator de momentum – ajuste conforme sua preferência (valor em pixels)
+    const momentumFactor = 300;
+    const extraScroll = velocity * momentumFactor;
 
-  // ----- Ajuste do Scroll para o Efeito Infinito -----
-  slider.addEventListener('scroll', () => {
-    // Considerando um gap de 10px (ajuste se necessário)
-    const firstItemWidth = slider.children[0].offsetWidth + 10;
-    const originalContentWidth = firstItemWidth * (slider.children.length / 2);
-
-    // Se o scroll atingir o início, reposiciona para o final da primeira metade.
-    if (slider.scrollLeft <= 0) {
-      slider.scrollLeft += originalContentWidth;
+    if (dx > 0) {
+      slider.scrollBy({ left: extraScroll, behavior: 'smooth' });
+    } else if (dx < 0) {
+      slider.scrollBy({ left: -extraScroll, behavior: 'smooth' });
     }
-    // Se o scroll atingir o final da duplicação, reposiciona para o início da primeira metade.
-    else if (slider.scrollLeft >= originalContentWidth * 2) {
-      slider.scrollLeft -= originalContentWidth;
-    }
-  });
+  };
 
-  // ----- Botões de Navegação (opcional) -----
+  // Eventos para mouse
+  slider.addEventListener('mousedown', (e) => onDragStart(e.pageX));
+  slider.addEventListener('mousemove', (e) => onDragMove(e.pageX));
+  slider.addEventListener('mouseup', onDragEnd);
+  slider.addEventListener('mouseleave', onDragEnd);
+
+  // Eventos para toque (touch)
+  slider.addEventListener('touchstart', (e) => onDragStart(e.touches[0].pageX));
+  slider.addEventListener('touchmove', (e) => onDragMove(e.touches[0].pageX));
+  slider.addEventListener('touchend', onDragEnd);
+
+  // Botões de navegação permanecem os mesmos (opcional)
   prevButton.addEventListener('click', () => {
     slider.scrollBy({ left: -200, behavior: 'smooth' });
   });
-
   nextButton.addEventListener('click', () => {
     slider.scrollBy({ left: 200, behavior: 'smooth' });
   });
 });
+
 
 
 
