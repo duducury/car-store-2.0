@@ -513,9 +513,7 @@ img {
   margin: 0 auto; /* Centraliza horizontalmente */
   position: relative; /* Necessário para botões de navegação */
   padding: 0 20px; /* Espaçamento interno */
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch; /* iOS */
+  
   
 }
 
@@ -532,7 +530,6 @@ img {
   display: flex;
   flex-direction: column;
   align-items: center;
-  
 }
 
 /* Imagens dentro dos cards */
@@ -582,41 +579,32 @@ img {
 }
 
 /* Responsividade */
-/* Responsividade para telas médias (até 1024px) */
-@media (max-width: 1024px) {
-  #inventory-grid {
-    padding: 0 10px; /* Reduz o espaçamento interno */
-    gap: 15px; /* Diminui o espaço entre os cards */
-  }
-
-  .car-card {
-    flex: 0 0 calc(45% - 15px); /* Mostra 2 cards por linha */
-    max-width: 400px; 
-    margin: 10px auto; 
-  }
-
-  .car-image img {
-    width: 100%; 
-    height: auto; 
-  }
-}
-
-/* Responsividade para telas pequenas (até 768px) */
 @media (max-width: 768px) {
   #inventory-grid {
-    gap: 10px;
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 12px;
+    padding: 0 10px;
   }
 
   .car-card {
-    flex: 0 0 calc(100% - 20px); 
-    max-width: 100%; 
+    flex: 0 0 85%;
+    max-width: 85%;
+    scroll-snap-align: center;
+    margin: 10px 0;
   }
 
-  .car-image img {
-    width: 100%; 
-    height: auto; 
+ 
+
+  .view-all-options {
+    text-align: center;
+    margin-top: 20px;
   }
 }
+
 #inventory-grid.active {
   cursor: grabbing; /* Mostra um cursor de "pegando" enquanto desliza */
 }
