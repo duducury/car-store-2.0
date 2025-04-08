@@ -622,20 +622,354 @@ img {
 
 
 
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  color: #333;
+  padding-top: 20px;
+}
 
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
 
+/* Container Principal */
+.car-detail-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 100px auto 50px;
+  padding: 20px;
+  align-items: flex-start;
+}
+.car-detail-left {
+  flex: 2;
+  max-width: 70%;
+}
+.car-detail-right {
+  flex: 1;
+  max-width: 30%;
+  position: sticky;
+  top: 20px;
+  align-self: flex-start;
+}
 
+@media (max-width: 768px) {
+  .car-detail-container {
+    flex-direction: column;
+  }
+  .car-detail-left,
+  .car-detail-right,
+  .car-detail-description-container,
+  .video-container {
+    max-width: 100%;
+    margin: 10px 0;
+  }
+}
 
+/* Carrossel */
+.car-detail-carousel-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 10px;
+}
+.car-detail-carousel-slide img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.car-detail-carousel-slide img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
 
-/* Container geral */
+.car-detail-carousel-track-container {
+  display: flex;
+  overflow: hidden;
+}
+.car-detail-carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+.car-detail-carousel-slide {
+  min-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.car-detail-carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 2;
+}
+.car-detail-carousel-control:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.car-detail-carousel-control.car-detail-prev {
+  left: 10px;
+}
+.car-detail-carousel-control.car-detail-next {
+  right: 10px;
+}
+
+/* Thumbnails */
+.car-detail-thumbnails {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+.car-detail-thumbnail {
+  width: 100px;
+  height: 60px;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease;
+}
+.car-detail-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.car-detail-thumbnail:hover,
+.car-detail-thumbnail.active {
+  border-color: #007bff;
+}
+
+/* Títulos e Descrições */
+.car-detail-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+  text-transform: capitalize;
+}
+.car-detail-price {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #003e81;
+  margin-bottom: 20px;
+}
+.car-detail-subtitle {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #444;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 8px;
+  text-align: center;
+}
+
+.car-detail-specifications {
+  margin-top: 20px;
+  padding: 20px;
+  background: linear-gradient(135deg, #f9f9f9, #eaf4ff);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.car-detail-spec-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.car-detail-spec-grid p {
+  margin: 0;
+  font-size: 1rem;
+  color: #555;
+  display: flex;
+}
+.car-detail-spec-grid strong {
+  display: inline-block;
+  width: 150px;
+  color: #333;
+}
+.car-detail-spec-grid span {
+  flex-grow: 1;
+}
+
+.car-detail-description-container {
+  margin: 40px 0 30px;
+  padding: 20px;
+}
+.car-detail-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #666;
+  text-align: justify;
+}
+
+/* Vídeo */
+.video-container {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+.video-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 15px;
+  text-align: center;
+}
+.car-video {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+}
+
+/* Formulário */
+.email-form-container {
+  margin-top: 20px;
+  padding: 20px;
+  background: linear-gradient(135deg, #f9f9f9, #eaf4ff);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.email-form-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
+  text-align: center;
+}
+.email-form {
+  display: flex;
+  flex-direction: column;
+}
+.email-form label {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #555;
+  margin-bottom: 5px;
+}
+.email-form input,
+.email-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: #333;
+}
+.email-form input:focus,
+.email-form textarea:focus {
+  border-color: #007bff;
+  outline: none;
+}
+.email-form-btn {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.email-form-btn:hover {
+  background-color: #0056b3;
+}
+
+/* WhatsApp */
+.whatsapp-button {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #25d366;
+  padding-right: 20px;
+  border-radius: 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  width: fit-content;
+  margin: 20px auto;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  height: 60px;
+  padding-left: 90px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.whatsapp-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+.profile-pic {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #fdcf00;
+  margin-left: -90px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.whatsapp-button:hover .profile-pic {
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.help-link {
+  display: flex;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  gap: 10px;
+}
+.whatsapp-icon {
+  font-size: 20px;
+  transition: transform 0.3s ease;
+}
+.whatsapp-button:hover .whatsapp-icon {
+  transform: scale(1.2);
+}
+
+/* Carrossel de Destaques (Responsivo) */
 .slider-wrapper {
   position: relative;
   overflow: hidden;
   width: 100%;
   margin-top: 30px;
 }
-
-/* Track deslizante */
 .slider-track {
   display: flex;
   gap: 20px;
@@ -645,17 +979,13 @@ img {
   -webkit-overflow-scrolling: touch;
   scroll-snap-type: x mandatory;
 }
-
 .slider-track::-webkit-scrollbar {
   display: none;
 }
-
 .slider-track.dragging {
   cursor: grabbing;
   scroll-behavior: auto;
 }
-
-/* Botões de navegação */
 .inventory-nav {
   position: absolute;
   top: 50%;
@@ -668,16 +998,12 @@ img {
   cursor: pointer;
   z-index: 1;
 }
-
 .prev-btn {
   left: 0;
 }
-
 .next-btn {
   right: 0;
 }
-
-/* Estilo dos cards */
 .car-card {
   flex: 0 0 auto;
   width: 260px;
@@ -688,41 +1014,36 @@ img {
   scroll-snap-align: center;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
-
 .car-card:hover {
   transform: scale(1.05);
 }
-
 .car-image {
   width: 100%;
   height: 160px;
   overflow: hidden;
 }
-
 .car-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-
 .car-details {
   padding: 15px;
   font-size: 14px;
   text-align: center;
 }
-
 .car-name {
   font-weight: bold;
   margin-bottom: 5px;
 }
-
 .car-price {
   font-size: 18px;
   color: #ffffff;
   font-weight: bold;
 }
-
 .car-specs {
   margin-top: 10px;
   display: flex;
@@ -730,10 +1051,26 @@ img {
   flex-wrap: wrap;
   justify-content: center;
 }
-
 .car-spec {
   background: #333;
   padding: 5px 8px;
   border-radius: 5px;
   font-size: 12px;
 }
+
+@media (max-width: 768px) {
+  .slider-track {
+    gap: 10px;
+  }
+  .car-card {
+    width: 80%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  .car-image {
+    height: 180px;
+  }
+}
+
+
+
