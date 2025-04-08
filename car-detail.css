@@ -905,23 +905,24 @@ img {
 
 /* Carrossel de Destaques (Responsivo) */
 .slider-wrapper {
-  position: relative;
   overflow: hidden;
   width: 100%;
-  margin-top: 30px;
 }
+
 .slider-track {
   display: flex;
-  gap: 20px;
-  padding: 10px;
   overflow-x: auto;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   scroll-snap-type: x mandatory;
+  gap: 16px;
+  padding: 10px;
 }
+
 .slider-track::-webkit-scrollbar {
   display: none;
 }
+
 .slider-track.dragging {
   cursor: grabbing;
   scroll-behavior: auto;
@@ -982,7 +983,7 @@ img {
 }
 .car-price {
   font-size: 18px;
-  color: #7c7c7c;
+  color: #ffffff;
   font-weight: bold;
 }
 .car-specs {
