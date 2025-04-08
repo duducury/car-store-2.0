@@ -351,59 +351,68 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-
 document.addEventListener('DOMContentLoaded', () => {
-  const slider = document.getElementById('inventory-grid');
-  let isDragging = false;
+  const slider = document.querySelector('#inventory-grid');
+  const prevButton = document.querySelector('#prevInventory');
+  const nextButton = document.querySelector('#nextInventory');
+
+  let isDown = false;
   let startX;
   let scrollLeft;
 
-  // Desktop
+  // Evento para deslizar com o mouse ou dedo
   slider.addEventListener('mousedown', (e) => {
-    isDragging = true;
-    slider.classList.add('dragging');
+    isDown = true;
+    slider.classList.add('active');
     startX = e.pageX - slider.offsetLeft;
     scrollLeft = slider.scrollLeft;
   });
 
   slider.addEventListener('mouseleave', () => {
-    isDragging = false;
-    slider.classList.remove('dragging');
+    isDown = false;
+    slider.classList.remove('active');
   });
 
   slider.addEventListener('mouseup', () => {
-    isDragging = false;
-    slider.classList.remove('dragging');
+    isDown = false;
+    slider.classList.remove('active');
   });
 
   slider.addEventListener('mousemove', (e) => {
-    if (!isDragging) return;
+    if (!isDown) return;
     e.preventDefault();
     const x = e.pageX - slider.offsetLeft;
-    const walk = (x - startX) * 1.8; // Sensibilidade
+    const walk = (x - startX) * 1; // Ajuste a velocidade do deslize
     slider.scrollLeft = scrollLeft - walk;
   });
 
-  // Mobile
+  // Suporte a touch (deslize no celular)
   slider.addEventListener('touchstart', (e) => {
-    isDragging = true;
+    isDown = true;
     startX = e.touches[0].pageX - slider.offsetLeft;
     scrollLeft = slider.scrollLeft;
   });
 
   slider.addEventListener('touchend', () => {
-    isDragging = false;
+    isDown = false;
   });
 
   slider.addEventListener('touchmove', (e) => {
-    if (!isDragging) return;
+    if (!isDown) return;
     const x = e.touches[0].pageX - slider.offsetLeft;
-    const walk = (x - startX) * 1.8; // Sensibilidade mobile
+    const walk = (x - startX) * 1; // Ajuste a sensibilidade do deslize
     slider.scrollLeft = scrollLeft - walk;
   });
+
+  // Botões de navegação
+  prevButton.addEventListener('click', () => {
+    slider.scrollBy({ left: -200, behavior: 'smooth' });
+  });
+
+  nextButton.addEventListener('click', () => {
+    slider.scrollBy({ left: 200, behavior: 'smooth' });
+  });
 });
-
-
 function setupCarouselNavigation() {
   const inventoryGrid = document.getElementById('inventory-grid');
   const prevInventory = document.getElementById('prevInventory');
@@ -435,7 +444,4 @@ function setupCarouselNavigation() {
     });
   });
 }
-
-
-
 
