@@ -405,6 +405,36 @@ img {
   margin: 0 auto;
 }
 
+@media (max-width: 768px) {
+  .video-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .car-video {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  .video-title {
+    text-align: center;
+    width: 100%;
+  }
+}
+
+
+
+
+
+
+
 .whatsapp-button {
   display: flex;
   align-items: center;
