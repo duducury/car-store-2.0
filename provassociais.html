@@ -7,6 +7,8 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
+
+    
 .carousel {
   display: flex;
   flex-direction: column;
@@ -229,6 +231,16 @@
   }
 }
 
+@media (max-height: 800px) {
+  .carousel {
+    padding: 10px 0; /* Diminui o padding para liberar mais espaço vertical */
+  }
+  
+  /* Ajuste outros elementos conforme necessário */
+  .work-section {
+    margin-bottom: 20px;
+  }
+}
 
 @media (max-width: 768px) {
   .carousel__dot {
