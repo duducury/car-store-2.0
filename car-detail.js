@@ -359,54 +359,45 @@ document.addEventListener('DOMContentLoaded', () => {
   let isDown = false;
   let startX = 0;
   let scrollLeftStart = 0;
-  let startTime = 0; // Marca o tempo de início do gesto
+  let startTime = 0; // Guarda o instante em que o gesto iniciou
 
-  // Inicia o gesto (mouse ou touch)
+  // Inicia o gesto (para mouse e touch)
   const onDragStart = (pageX) => {
     isDown = true;
     startX = pageX - slider.offsetLeft;
     scrollLeftStart = slider.scrollLeft;
-    startTime = new Date().getTime();
-    slider.classList.add('active');
+    startTime = new Date().getTime(); // Registra o tempo de início
+    slider.classList.add('active'); // Pode ser usado para mudar o cursor, por exemplo
   };
 
-  // Durante o gesto, atualiza o scroll conforme o movimento
+  // Durante o gesto
   const onDragMove = (pageX) => {
     if (!isDown) return;
     const x = pageX - slider.offsetLeft;
-    const walk = x - startX;
+    const walk = x - startX; // Calcula a distância movida
     slider.scrollLeft = scrollLeftStart - walk;
   };
 
-  // Função que aplica o momentum utilizando requestAnimationFrame
-  function applyMomentum(initialVelocity) {
-    let velocity = initialVelocity;
-    const deceleration = 0.95;   // Fator de desaceleração (quanto menor, mais prolongado será o efeito)
-    const minVelocity = 0.5;       // Velocidade mínima para interromper a animação
-
-    function frame() {
-      if (Math.abs(velocity) > minVelocity) {
-        slider.scrollLeft += velocity;
-        velocity *= deceleration;
-        requestAnimationFrame(frame);
-      }
-    }
-    requestAnimationFrame(frame);
-  }
-
-  // Ao final do gesto, calcula a velocidade e inicia a animação de momentum
+  // Ao encerrar o gesto, calcula a velocidade e aplica momentum
   const onDragEnd = () => {
     if (!isDown) return;
     isDown = false;
     slider.classList.remove('active');
     const endTime = new Date().getTime();
     const dt = endTime - startTime; // Duração do gesto (ms)
-    const dx = slider.scrollLeft - scrollLeftStart; // Variação no scroll
-    // Calcula a velocidade em pixels por milissegundo
-    let velocity = dx / dt;
-    // Multiplica a velocidade para um efeito "solto" – ajuste esse valor conforme necessário
-    velocity *= 20;
-    applyMomentum(velocity);
+    // dx é a variação no scroll a partir do início até o fim do gesto
+    const dx = slider.scrollLeft - scrollLeftStart;
+    // Calcula a velocidade (pixels por ms)
+    const velocity = Math.abs(dx) / dt;
+    // Fator de momentum – ajuste conforme sua preferência (valor em pixels)
+    const momentumFactor = 300;
+    const extraScroll = velocity * momentumFactor;
+
+    if (dx > 0) {
+      slider.scrollBy({ left: extraScroll, behavior: 'smooth' });
+    } else if (dx < 0) {
+      slider.scrollBy({ left: -extraScroll, behavior: 'smooth' });
+    }
   };
 
   // Eventos para mouse
@@ -420,7 +411,7 @@ document.addEventListener('DOMContentLoaded', () => {
   slider.addEventListener('touchmove', (e) => onDragMove(e.touches[0].pageX));
   slider.addEventListener('touchend', onDragEnd);
 
-  // Navegação por botões (mantém o comportamento, se necessário)
+  // Botões de navegação permanecem os mesmos (opcional)
   prevButton.addEventListener('click', () => {
     slider.scrollBy({ left: -200, behavior: 'smooth' });
   });
@@ -428,7 +419,6 @@ document.addEventListener('DOMContentLoaded', () => {
     slider.scrollBy({ left: 200, behavior: 'smooth' });
   });
 });
-
 
 
 
