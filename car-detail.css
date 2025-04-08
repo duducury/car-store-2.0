@@ -559,7 +559,8 @@ img {
 }
 #inventory-grid {
   display: flex;
-  overflow-x: auto;
+  touch-action: pan-x; 
+  overflow-y: hidden;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   gap: 16px;
@@ -983,7 +984,7 @@ img {
 }
 .car-price {
   font-size: 18px;
-  color: #ffffff;
+  color: #3800d1;
   font-weight: bold;
 }
 .car-specs {
@@ -998,6 +999,13 @@ img {
   padding: 5px 8px;
   border-radius: 5px;
   font-size: 12px;
+}
+
+
+.inventory-header .title {
+  text-align: center;
+  margin: 0 auto;
+  
 }
 
 @media (max-width: 768px) {

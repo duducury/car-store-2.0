@@ -352,59 +352,88 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 document.addEventListener('DOMContentLoaded', () => {
-  const slider = document.querySelector('#inventory-grid');
-  const prevButton = document.querySelector('#prevInventory');
-  const nextButton = document.querySelector('#nextInventory');
+  const slider = document.getElementById('inventory-grid');
+  const prevButton = document.getElementById('prevInventory');
+  const nextButton = document.getElementById('nextInventory');
 
+  // ----- Efeito Infinito: Duplica o conteúdo do slider -----
+  if (slider) {
+    // Salva o conteúdo original
+    const originalContent = slider.innerHTML;
+    // Duplica para que a experiência seja contínua
+    slider.innerHTML += originalContent;
+
+    // Define a posição inicial para a metade dos itens
+    const totalItems = slider.children.length; // Total após duplicação
+    const originalCount = totalItems / 2;
+    if (slider.children.length > 0) {
+      // Se o primeiro item tiver gap (por exemplo, 10px definido no JS ou CSS), ajuste se necessário
+      const firstItemWidth = slider.children[0].offsetWidth + 10; 
+      slider.scrollLeft = firstItemWidth * originalCount;
+    }
+  }
+
+  // ----- Eventos de Arraste (Mouse & Touch) -----
   let isDown = false;
   let startX;
-  let scrollLeft;
+  let scrollLeftStart;
 
-  // Evento para deslizar com o mouse ou dedo
+  // Eventos para mouse
   slider.addEventListener('mousedown', (e) => {
     isDown = true;
-    slider.classList.add('active');
+    slider.classList.add('active');  // Se você quiser mudar o cursor ou aplicar algum estilo
     startX = e.pageX - slider.offsetLeft;
-    scrollLeft = slider.scrollLeft;
+    scrollLeftStart = slider.scrollLeft;
   });
-
   slider.addEventListener('mouseleave', () => {
     isDown = false;
     slider.classList.remove('active');
   });
-
   slider.addEventListener('mouseup', () => {
     isDown = false;
     slider.classList.remove('active');
   });
-
   slider.addEventListener('mousemove', (e) => {
     if (!isDown) return;
     e.preventDefault();
     const x = e.pageX - slider.offsetLeft;
-    const walk = (x - startX) * 1; // Ajuste a velocidade do deslize
-    slider.scrollLeft = scrollLeft - walk;
+    const walk = x - startX; // Calcula a distância movida
+    slider.scrollLeft = scrollLeftStart - walk;
   });
 
-  // Suporte a touch (deslize no celular)
+  // Eventos para toque (mobile)
   slider.addEventListener('touchstart', (e) => {
     isDown = true;
     startX = e.touches[0].pageX - slider.offsetLeft;
-    scrollLeft = slider.scrollLeft;
+    scrollLeftStart = slider.scrollLeft;
   });
-
   slider.addEventListener('touchend', () => {
     isDown = false;
   });
-
   slider.addEventListener('touchmove', (e) => {
     if (!isDown) return;
     const x = e.touches[0].pageX - slider.offsetLeft;
-    const walk = (x - startX) * 1; // Ajuste a sensibilidade do deslize
-    slider.scrollLeft = scrollLeft - walk;
+    const walk = x - startX;
+    slider.scrollLeft = scrollLeftStart - walk;
   });
 
-  // Botões de navegação
+  // ----- Ajuste do Scroll para o Efeito Infinito -----
+  slider.addEventListener('scroll', () => {
+    // Considerando um gap de 10px (ajuste se necessário)
+    const firstItemWidth = slider.children[0].offsetWidth + 10;
+    const originalContentWidth = firstItemWidth * (slider.children.length / 2);
+
+    // Se o scroll atingir o início, reposiciona para o final da primeira metade.
+    if (slider.scrollLeft <= 0) {
+      slider.scrollLeft += originalContentWidth;
+    }
+    // Se o scroll atingir o final da duplicação, reposiciona para o início da primeira metade.
+    else if (slider.scrollLeft >= originalContentWidth * 2) {
+      slider.scrollLeft -= originalContentWidth;
+    }
+  });
+
+  // ----- Botões de Navegação (opcional) -----
   prevButton.addEventListener('click', () => {
     slider.scrollBy({ left: -200, behavior: 'smooth' });
   });
@@ -413,6 +442,11 @@ document.addEventListener('DOMContentLoaded', () => {
     slider.scrollBy({ left: 200, behavior: 'smooth' });
   });
 });
+
+
+
+
+
 function setupCarouselNavigation() {
   const inventoryGrid = document.getElementById('inventory-grid');
   const prevInventory = document.getElementById('prevInventory');
