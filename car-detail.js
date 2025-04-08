@@ -291,28 +291,28 @@ async function displayHighlightedCars() {
   }
 }
 
-function setupCarouselNavigation() {
-  const inventoryGrid = document.getElementById('inventory-grid');
-  const prevInventory = document.getElementById('prevInventory');
-  const nextInventory = document.getElementById('nextInventory');
+// function setupCarouselNavigation() {
+//   const inventoryGrid = document.getElementById('inventory-grid');
+//   const prevInventory = document.getElementById('prevInventory');
+//   const nextInventory = document.getElementById('nextInventory');
 
-  const productWidth = inventoryGrid.querySelector('.car-card').offsetWidth || 0;
-  const scrollAmount = productWidth * 4; // Calcula a largura para rolar 4 produtos por vez
+//   const productWidth = inventoryGrid.querySelector('.car-card').offsetWidth || 0;
+//   const scrollAmount = productWidth * 4; // Calcula a largura para rolar 4 produtos por vez
 
-  prevInventory.addEventListener('click', () => {
-      inventoryGrid.scrollBy({
-          left: -scrollAmount,
-          behavior: 'smooth',
-      });
-  });
+//   prevInventory.addEventListener('click', () => {
+//       inventoryGrid.scrollBy({
+//           left: -scrollAmount,
+//           behavior: 'smooth',
+//       });
+//   });
 
-  nextInventory.addEventListener('click', () => {
-      inventoryGrid.scrollBy({
-          left: scrollAmount,
-          behavior: 'smooth',
-      });
-  });
-}
+//   nextInventory.addEventListener('click', () => {
+//       inventoryGrid.scrollBy({
+//           left: scrollAmount,
+//           behavior: 'smooth',
+//       });
+//   });
+// }
 
 // Chamada para exibir os carros destacados
 document.addEventListener('DOMContentLoaded', () => {
