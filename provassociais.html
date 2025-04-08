@@ -5,9 +5,93 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-  <title>Carousel with Opposite Mouse Follow Animation</title>
   <link rel="stylesheet" href="style.css">
   <style>
+.carousel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px 0 40px;
+  background: #000;
+  overflow: hidden;
+}
+
+
+.carousel__list {
+  display: flex;
+  list-style: none;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  height: 520px;
+  justify-content: center;
+  perspective: 1600px;
+}
+.carousel__item {
+  position: absolute;
+  width: 400px; 
+  height: 500px; 
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+}
+
+.carousel__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Centro */
+.carousel__item[data-pos="0"] {
+  z-index: 5;
+  transform: scale(1) translateX(0);
+}
+
+/* Lados */
+.carousel__item[data-pos="-1"] {
+  z-index: 4;
+  transform: scale(0.92) translateX(-380px) rotateY(15deg);
+  opacity: 1;
+}
+.carousel__item[data-pos="1"] {
+  z-index: 4;
+  transform: scale(0.92) translateX(380px) rotateY(-15deg);
+  opacity: 1;
+}
+
+/* Mais afastados */
+.carousel__item[data-pos="-2"] {
+  z-index: 3;
+  transform: scale(0.85) translateX(-750px) rotateY(25deg);
+  opacity: 1;
+}
+.carousel__item[data-pos="2"] {
+  z-index: 3;
+  transform: scale(0.85) translateX(750px) rotateY(-25deg);
+  opacity: 1;
+}
+
+.carousel__dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.carousel__dot {
+  width: 12px;
+  height: 12px;
+  background-color: #666;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.carousel__dot.active {
+  background-color: #fff;
+}
 
 .navbar {
     position: fixed; 
@@ -18,9 +102,239 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); 
 }
 
+.carousel__item img {
+  user-drag: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.carousel__item img {
+  user-drag: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+.carousel__list {
+  cursor: grab;
+}
+
+.carousel__list:active {
+  cursor: grabbing;
+}
+.lightbox {
+  position: fixed;
+  display: none; 
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.9);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+}
 
 
-  </style>
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+}
+
+.lightbox .close {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  font-size: 40px;
+  color: white;
+  cursor: pointer;
+}
+
+.lightbox-prev,
+.lightbox-next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  font-size: 50px;
+  color: white;
+  padding: 10px;
+  user-select: none;
+  transform: translateY(-50%);
+}
+
+.lightbox-prev {
+  left: 30px;
+}
+
+.lightbox-next {
+  right: 30px;
+}
+.carousel h1 {
+  font-size: 2.2rem !important;
+  line-height: 2.6rem;
+  padding: 0 16px;
+  margin-bottom: 0.8rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.carousel p {
+  font-size: 1.1rem !important;
+  line-height: 1.6rem;
+  padding: 0 20px;
+  margin-top: 0;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 768px) {
+  .carousel__item {
+    width: 180px;
+    height: 250px;
+  }
+
+  .carousel__item[data-pos="-1"] {
+    transform: scale(0.8) translateX(-130px) rotateY(10deg);
+  }
+
+  .carousel__item[data-pos="1"] {
+    transform: scale(0.8) translateX(130px) rotateY(-10deg);
+  }
+
+  .carousel__item[data-pos="-2"] {
+    transform: scale(0.7) translateX(-260px) rotateY(20deg);
+  }
+
+  .carousel__item[data-pos="2"] {
+    transform: scale(0.7) translateX(260px) rotateY(-20deg);
+  }
+
+  .carousel__list {
+    min-height: 250px;
+    height: auto !important;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .carousel {
+    padding-top: 80px !important;
+    padding-bottom: 80px !important;
+    height: auto !important;
+  }
+  .work-gallery-container {
+    margin-top: 0 !important;
+    padding-top: 10px !important; 
+  }
+}
+
+
+@media (max-width: 768px) {
+  .carousel__dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  .carousel__dots {
+    gap: 6px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    max-width: 95vw;
+  }
+}
+.carousel__list {
+  min-height: 500px; 
+  position: relative;
+}
+@media (max-width: 768px) {
+  .carousel__list {
+    min-height: 250px;
+  }
+}
+.work-section {
+  padding-top: 20px;
+}
+.intro-text {
+  position: relative;
+  background-color: #000;
+  padding: 10px;
+  margin-top: 0;
+}
+
+
+/* butao carosel  */
+.lightbox-prev,
+.lightbox-next {
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  font-size: 2.5rem;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all 0.3s ease;
+  z-index: 99999;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.lightbox-prev {
+  left: 20px;
+}
+
+.lightbox-next {
+  right: 20px;
+}
+
+
+@media (max-width: 768px) {
+  .lightbox-prev,
+  .lightbox-next {
+    width: 40px;
+    height: 40px;
+    font-size: 1.6rem;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: none;
+    border: none;
+  }
+
+  .lightbox-prev:hover,
+  .lightbox-next:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-50%) scale(1.05);
+  }
+}
+
+
+/* Animação de entrada */
+.carousel__item.fade-in {
+  animation: fadeSlideIn 0.6s ease forwards;
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+</style>
 </head>
 <body>
   <header class="navbar">
@@ -64,25 +378,64 @@
   <br>
 
 
-
-
-<!-- Link to Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 
 
 
 
-<section class="work-section" style="margin-top: 100px;"> <!-- Adiciona margem superior -->
-    <!-- Contêiner da galeria com rolagem -->
+<section class="work-section">
+  
+<!-- carosel -->
+<div class="carousel">
+  <div style="position: relative; margin-top: 0px;  text-align: center; z-index: 10;">
+
+    <h1 style="
+      color: white;
+      font-size: 3rem;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.4);
+    ">
+      Entregas Realizadas em Brasília 🚗
+    </h1>
+    <p style="
+      color: #ccc;
+      font-size: 1.2rem;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 300;
+      margin-top: 0;
+      text-shadow: 0 1px 5px rgba(0,0,0,0.3);
+    ">
+      Confira alguns dos veículos já entregues pela Marcelo Tripa
+    </p>
+  </div>
+  
+
+  <ul class="carousel__list" id="carouselList"></ul>
+
+
+
+  <!-- Bolinhas indicadoras -->
+  <div class="carousel__dots" id="carouselDots"></div>
+</div>
+
+    
+
+
+
+  <!-- carosel2 -->
     <div class="work-gallery-container">  
-        <div class="intro-text" style="position: sticky; top: 0; z-index: 10; background-color: #000; padding: 10px;">
+      <div class="intro-text" style="position: relative; background-color: #000; padding: 10px;">
+
             <h2 class="intro-name" style="font-size: 28px; color: white;"> <!-- Ajusta o tamanho e cor do texto -->
                 MARCELO <span class="highlight"> TRIPA </span><span class="wave">🚀</span><br>
                 O Maior <span class="highlight"> IMPORTADOR </span>De veículos do País🚗...
             </h2>
         </div>
         <div class="work-gallery">
-              <!-- Imagens adicionadas aqui -->
+              <!-- Imagens adicionadas  -->
               <div class="work-item"><img src="imgs/trabalho/IMG-20241114-WA0386.jpg" alt="Carro Importado"></div>
               <div class="work-item"><img src="imgs/trabalho/IMG-20241114-WA0387.jpg" alt="Carro Importado"></div>
               <div class="work-item"><img src="imgs/trabalho/IMG-20241114-WA0388.jpg" alt="Carro Importado"></div>
@@ -128,17 +481,83 @@
   <a class="lightbox-next" onclick="changeImage(1)">&#10095;</a>
 </div>
 
-
-
-
-
-
-
-
-
-
+<div id="lightbox-carousel" class="lightbox" style="display:none;">
+  <span class="close" onclick="closeLightboxCarousel()">&times;</span>
+  <img id="lightbox-carousel-img" src="" alt="Imagem ampliada">
+  <button class="lightbox-prev" onclick="navigateLightbox(-1, event)">&#10094;</button>
+  <button class="lightbox-next" onclick="navigateLightbox(1, event)">&#10095;</button>
   
-  
+</div>
+
+
+
+
+
+
+
+
+<script>
+ const carouselList = document.getElementById("carouselList");
+const carouselDots = document.getElementById("carouselDots");
+const totalImages = 28;
+let centerIndex = 2;
+
+function renderCarousel() {
+  carouselList.innerHTML = "";
+  carouselDots.innerHTML = "";
+
+  const isMobile = window.innerWidth <= 768;
+const maxDots = isMobile ? 7 : totalImages;
+
+for (let i = 0; i < maxDots; i++) {
+
+    const dot = document.createElement("span");
+    dot.className = "carousel__dot";
+    if (i === centerIndex) dot.classList.add("active");
+    dot.addEventListener("click", () => {
+      centerIndex = i;
+      renderCarousel();
+    });
+    carouselDots.appendChild(dot);
+  }
+
+  for (let offset = -2; offset <= 2; offset++) {
+    const index = (centerIndex + offset + totalImages) % totalImages;
+    const imgNum = (index + 1).toString().padStart(2, '0');
+    const li = document.createElement("li");
+    li.className = "carousel__item";
+    li.setAttribute("data-pos", offset);
+    li.innerHTML = `<img src="imgs/carosel_entregasbrasilia/marcelotripa${imgNum}.jpg" alt="Entrega ${imgNum}" />`;
+    carouselList.appendChild(li);
+  }
+}
+
+renderCarousel();
+
+carouselList.addEventListener('click', function (e) {
+  const clicked = e.target.closest('.carousel__item');
+  if (!clicked) return;
+  const clickedPos = parseInt(clicked.dataset.pos);
+  if (clickedPos === 0) return;
+  centerIndex = (centerIndex + clickedPos + totalImages) % totalImages;
+  renderCarousel();
+});
+
+</script>
+<script>
+  function openLightboxCarousel(index) {
+  if (typeof index !== 'number' || isNaN(index)) return;
+
+  currentLightboxIndex = index;
+  const imgNum = (index + 1).toString().padStart(2, '0');
+  const src = `imgs/carosel_entregasbrasilia/marcelotripa${imgNum}.jpg`;
+
+  document.getElementById("lightbox-carousel-img").src = src;
+  document.getElementById("lightbox-carousel").style.display = "flex";
+}
+
+</script>
+
 <script>
   function toggleMenu() {
   const menu = document.querySelector('.menu');
@@ -192,7 +611,209 @@
     }
   });
 </script>
+<script>
+  const list = document.querySelector('.carousel__list');
+  const items = document.querySelectorAll('.carousel__item');
+  const all = Array.from(items);
 
+  list.addEventListener('click', function (e) {
+    const newActive = e.target.closest('.carousel__item');
+    if (!newActive) return;
+
+    const newPos = newActive.dataset.pos;
+    const current = all.find(item => item.dataset.pos == 0);
+    const prev = all.find(item => item.dataset.pos == -1);
+    const next = all.find(item => item.dataset.pos == 1);
+    const first = all.find(item => item.dataset.pos == -2);
+    const last = all.find(item => item.dataset.pos == 2);
+
+    [current, prev, next, first, last].forEach(item => {
+      const pos = parseInt(item.dataset.pos);
+      item.dataset.pos = getNewPos(pos, parseInt(newPos));
+    });
+  });
+
+  function getNewPos(current, clicked) {
+    const diff = current - clicked;
+    if (Math.abs(diff) > 2) return -current;
+    return diff;
+  }
+</script>
+
+
+
+
+
+
+
+
+<script>
+let autoRotateInterval;
+const ROTATE_INTERVAL = 1500; //  define o tempo padrão
+
+function startAutoRotate() {
+  autoRotateInterval = setInterval(() => {
+    centerIndex = (centerIndex + 1) % totalImages;
+    renderCarousel();
+  }, ROTATE_INTERVAL);
+}
+
+startAutoRotate(); 
+
+carouselElement.addEventListener('mouseenter', () => clearInterval(autoRotateInterval));
+carouselElement.addEventListener('mouseleave', startAutoRotate);
+
+  </script>
+  
+
+
+
+<script>
+  let isDragging = false;
+  let startX = 0;
+  let lastX = 0;
+  let velocity = 0;
+  let animationFrame;
+  let lastTime = 0;
+  
+  carouselList.addEventListener("mousedown", (e) => {
+    isDragging = true;
+    startX = e.clientX;
+    lastX = e.clientX;
+    lastTime = Date.now();
+  });
+  
+  document.addEventListener("mousemove", (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+  
+    let now = Date.now();
+    let dx = e.clientX - lastX;
+    let dt = now - lastTime;
+  
+    velocity = dx / dt;
+  
+    lastX = e.clientX;
+    lastTime = now;
+  });
+  
+  document.addEventListener("mouseup", (e) => {
+    if (!isDragging) return;
+    isDragging = false;
+  
+    let totalDx = e.clientX - startX;
+    let absVelocity = Math.abs(velocity);
+  
+    // número de slides baseado na força do arrasto
+    let slidesToMove = 0;
+  
+    // Se o usuário moveu muito ou muito rápido
+    if (Math.abs(totalDx) > 50 || absVelocity > 0.2) {
+      slidesToMove = Math.min(2, Math.floor(absVelocity * 10)); // no máximo 2 slides
+      if (totalDx < 0) {
+        centerIndex = (centerIndex + slidesToMove + totalImages) % totalImages;
+      } else {
+        centerIndex = (centerIndex - slidesToMove + totalImages) % totalImages;
+      }
+      renderCarousel();
+    }
+  });
+  </script>
+  
+
+<script>
+  
+// Impede que as imagens do carrossel possam ser arrastadas
+document.querySelectorAll('.carousel__item img').forEach((img) => {
+  img.addEventListener('dragstart', (e) => {
+    e.preventDefault();
+  });
+});
+
+</script>
+
+<script>
+  let currentLightboxIndex = centerIndex;
+  
+  function openLightboxCarousel(index) {
+    currentLightboxIndex = index;
+    const imgNum = (index + 1).toString().padStart(2, '0');
+    const src = `imgs/carosel_entregasbrasilia/marcelotripa${imgNum}.jpg`;
+  
+    document.getElementById("lightbox-carousel-img").src = src;
+    document.getElementById("lightbox-carousel").style.display = "flex";
+  }
+  
+  function closeLightboxCarousel() {
+    document.getElementById("lightbox-carousel").style.display = "none";
+  }
+  
+  function navigateLightbox(direction, event) {
+  event.stopPropagation(); // Impede que o clique suba até o fundo
+  currentLightboxIndex = (currentLightboxIndex + direction + totalImages) % totalImages;
+  const imgNum = (currentLightboxIndex + 1).toString().padStart(2, '0');
+  const src = `imgs/carosel_entregasbrasilia/marcelotripa${imgNum}.jpg`;
+  document.getElementById("lightbox-carousel-img").src = src;
+}
+  
+  document.addEventListener("keydown", function (e) {
+    if (document.getElementById("lightbox-carousel").style.display === "flex") {
+      if (e.key === "ArrowRight") navigateLightbox(1);
+      if (e.key === "ArrowLeft") navigateLightbox(-1);
+      if (e.key === "Escape") closeLightboxCarousel();
+    }
+  });
+  
+  // Clique para abrir a imagem central
+  carouselList.addEventListener("click", function (e) {
+    const clicked = e.target.closest(".carousel__item");
+    if (!clicked) return;
+  
+    const clickedPos = parseInt(clicked.dataset.pos);
+    if (clickedPos === 0) {
+      openLightboxCarousel(centerIndex);
+    }
+  });
+  </script>
+  <script>
+  // Fecha o lightbox ao clicar fora da imagem (fundo escuro)
+  document.getElementById("lightbox-carousel").addEventListener("click", function (e) {
+  const img = document.getElementById("lightbox-carousel-img");
+  if (!img.contains(e.target)) {
+    closeLightboxCarousel();
+  }
+});
+
+</script>
+<script>
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  carouselList.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  });
+
+  carouselList.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleGesture();
+  });
+
+  function handleGesture() {
+    const swipeThreshold = 50; 
+
+    if (touchEndX < touchStartX - swipeThreshold) {
+      // Swipe esquerda
+      centerIndex = (centerIndex + 1) % totalImages;
+      renderCarousel();
+    }
+
+    if (touchEndX > touchStartX + swipeThreshold) {
+      // Swipe direita
+      centerIndex = (centerIndex - 1 + totalImages) % totalImages;
+      renderCarousel();
+    }
+  }
+</script>
 
   </body>
 <!-- Footer Section -->
@@ -257,4 +878,3 @@
 
   
   </html>
-  
