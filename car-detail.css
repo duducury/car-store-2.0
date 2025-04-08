@@ -616,3 +616,124 @@ img {
   scroll-behavior: smooth; /* Rolagem suave */
   transition: transform 0.3s ease; /* Transição ao deslizar */
 }
+
+
+
+
+
+
+
+
+
+
+
+/* Container geral */
+.slider-wrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  margin-top: 30px;
+}
+
+/* Track deslizante */
+.slider-track {
+  display: flex;
+  gap: 20px;
+  padding: 10px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+}
+
+.slider-track::-webkit-scrollbar {
+  display: none;
+}
+
+.slider-track.dragging {
+  cursor: grabbing;
+  scroll-behavior: auto;
+}
+
+/* Botões de navegação */
+.inventory-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: #fff;
+  padding: 10px 15px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.prev-btn {
+  left: 0;
+}
+
+.next-btn {
+  right: 0;
+}
+
+/* Estilo dos cards */
+.car-card {
+  flex: 0 0 auto;
+  width: 260px;
+  background-color: #222;
+  border-radius: 10px;
+  overflow: hidden;
+  color: #fff;
+  scroll-snap-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.car-card:hover {
+  transform: scale(1.05);
+}
+
+.car-image {
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+}
+
+.car-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.car-details {
+  padding: 15px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.car-name {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.car-price {
+  font-size: 18px;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.car-specs {
+  margin-top: 10px;
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.car-spec {
+  background: #333;
+  padding: 5px 8px;
+  border-radius: 5px;
+  font-size: 12px;
+}

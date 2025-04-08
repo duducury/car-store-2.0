@@ -154,21 +154,27 @@
 <!-- Carros Destaques | Opções para Importação -->
 <section class="inventory-section">
   <div class="inventory-header">
-     
-      <h3 class="subtitle">Carros Destaque</h3>
-      <h2 class="title">Outras Opções para Importação</h2>
-      <br>
+    <h3 class="subtitle">Carros Destaques</h3>
+    <h2 class="title">Opções para Importação</h2>
   </div>
-
-  <!-- Botões de Navegação -->
-  <button id="prevInventory" class="inventory-nav">&#10094;</button>
-  <div id="inventory-grid" class="inventory-grid"></div>
-  <button id="nextInventory" class="inventory-nav">&#10095;</button>
-
-      <!-- Botão Ver Todas as Opções -->
-      <div class="view-all-options">
-        <button onclick="location.href='para-importar.html'" class="view-all-btn">Ver Todas as Opções</button>
+  
+  <!-- Botões de navegação -->
+  <div class="slider-wrapper">
+    <button class="inventory-nav prev-btn">&#10094;</button>
+  
+    <!-- Carrossel de carros -->
+    <div class="slider-track" id="inventory-grid">
+      <!-- Os cards serão inseridos via JS -->
     </div>
+  
+    <button class="inventory-nav next-btn">&#10095;</button>
+  </div>
+  
+  <!-- Botão de ver tudo -->
+  <div class="view-all-options">
+    <button onclick="location.href='para-importar.html'" class="view-all-btn">Ver Todas as Opções</button>
+  </div>
+  
 </section>
 
     
