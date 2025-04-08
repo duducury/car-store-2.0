@@ -445,3 +445,7 @@ function setupCarouselNavigation() {
   });
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+  const video = document.querySelector('.car-video');
+  video.currentTime = 0.02;
+});
