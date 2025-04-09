@@ -90,12 +90,16 @@ body {
     align-items: center;
     justify-content: center;
   }
+
+  
   .contact-right img {
     width: 100%;
-    max-width: 500px;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    max-width: 400px;
+    border-radius: 35px;
   }
+
+  .contact-right img:hover { transform: scale(1.05); }
+
 .promo-section {
     background-color: #d1d1d1;
     margin: 20px auto;

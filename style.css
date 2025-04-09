@@ -2146,3 +2146,57 @@ body {
 
 
 
+
+
+
+
+
+
+
+
+
+/* Container centralizado com largura máxima para evitar imagens muito grandes */
+.instagram-flyer-section {
+    text-align: center;
+    margin: 40px auto;
+    max-width: 750px; /* ajuste conforme a necessidade */
+  }
+  
+  /* As imagens se ajustam ao container */
+  .instagram-flyer-section .flyer {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease-in-out; /* transição suave para o efeito hover */
+  }
+  
+  /* Exibe somente a imagem horizontal em telas maiores */
+  .flyer-horizontal {
+    display: block;
+  }
+  .flyer-vertical {
+    display: none;
+  }
+  .instagram-flyer-section .flyer {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;  /* Ajuste este valor para deixar as bordas mais curvas */
+    transition: transform 0.3s ease-in-out;
+  }
+/* Em dispositivos com largura até 768px, exibe a imagem vertical e reduz ainda mais o container, se desejar */
+@media (max-width: 768px) {
+    .instagram-flyer-section {
+      max-width: 300px; /* Diminua esse valor para ajustar em telas menores */
+    }
+    .flyer-horizontal {
+      display: none;
+      
+    }
+    .flyer-vertical {
+      display: block;
+    }
+  }
+  
+  /* Efeito hover: aumenta a escala da imagem levemente ao passar o mouse */
+  .instagram-flyer-section a:hover .flyer {
+    transform: scale(1.05);
+  }
