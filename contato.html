@@ -207,6 +207,31 @@
 
 
 
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Selecione as seções da página de Contato pelos seus seletores
+    const sections = document.querySelectorAll(
+      ".desktop-only, .contact-section, .instagram-section, .promo-section"
+    );
+    
+    const observerOptions = {
+      threshold: 0.15 // A animação é acionada quando 10% do elemento está visível
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target); // Desativa a observação após a animação, se preferir animar somente uma vez
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  });
+</script>
 
 
 
