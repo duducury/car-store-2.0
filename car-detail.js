@@ -61,7 +61,7 @@ async function displayCarDetails() {
 
     // Atualize as informações
     document.getElementById('car-detail-name').textContent = car.Nome || 'Nome não disponível';
-    document.getElementById('car-detail-price').textContent = ` ${car.Preco || 'Não disponível'}`;
+    document.getElementById('car-detail-price').textContent = 'Entrar em contato';
     document.getElementById('car-detail-brand').textContent = car.Marca || 'Não disponível';
     document.getElementById('car-detail-description').textContent = car.Descrição || 'Descrição não disponível';
   } catch (error) {
@@ -101,7 +101,7 @@ function cleanCSV(data) {
   
       // Atualiza informações do carro
       document.getElementById('car-detail-name').textContent = car.Nome || 'Nome não disponível';
-      document.getElementById('car-detail-price').textContent = ` ${car.Preco || 'Não disponível'}`;
+      document.getElementById('car-detail-price').textContent = 'Entrar em contato';
       document.getElementById('car-detail-brand').textContent = car.Marca || 'Não disponível';
       document.getElementById('car-detail-model').textContent = car.Modelo || 'Não disponível';
       document.getElementById('car-detail-year').textContent = car.Ano || 'Não disponível';
@@ -272,7 +272,7 @@ async function displayHighlightedCars() {
               </div>
               <div class="car-details">
                   <h3 class="car-name">${car.Nome || 'Nome não disponível'}</h3>
-                  <p class="car-price">${car.Preco || 'Preço não disponível'}</p>
+                  <p class="car-price">Entrar em contato</p>
                   <div class="car-specs">
                       <span class="car-spec">${car.Ano || '-'}</span>
                       <span class="car-spec">${car.Km || '-'}</span>

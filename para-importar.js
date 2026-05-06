@@ -195,7 +195,7 @@ function renderInventory(cars) {
             </div>
             <div class="car-details">
                 <h3 class="car-name">${car.Nome}</h3>
-                <p class="car-price">${car.Preco}</p>
+                <p class="car-price">Entrar em contato</p>
                 <div class="car-specs">
                     <span class="car-spec">${car.Ano}</span>
                     <span class="car-spec">${car.Motor}</span>
